@@ -1,0 +1,186 @@
+/* Main Color Variables */
+$primaryColor: hsl(257, 40%, 49%);
+$secondaryColor: hsl(300, 69%, 71%);
+
+/* Types Variables */
+$headingFont: 'Poppins', sans-serif;
+$textFont: 'Open Sans', sans-serif;
+
+/* Flex Mixin */
+@mixin flexBox($align, $justify) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background: url(./images/bg-desktop.svg) no-repeat;
+    background-size: contain;
+    background-color: $primaryColor;
+}
+
+.page__container {
+    width: 1440px;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.nav__container {
+    padding-top: 1rem;
+
+    img {
+        width: 12rem;
+    }
+}
+
+.main__container {
+    display: flex;
+
+    padding-top: 8rem;
+
+    .main__text {
+        margin-left: 3rem;
+
+        h1 {
+            font-family: $headingFont;
+            color: #fff;
+            padding: 2.3rem 0 1rem 0;
+        }
+
+        p {
+            font-family: $textFont;
+            color: #fff;
+            line-height: 1.8;
+            padding-bottom: 2rem;
+        }
+
+        button {
+            padding: 1rem 4rem;
+            border-radius: 50px;
+            border: none;
+            background-color: #fff;
+            font-family: $textFont;
+            font-weight: 600;
+            color: $primaryColor;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+        }
+        
+        button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0px 10px 29px -10px rgba(0,0,0,0.75);
+        }
+    }
+}
+
+footer {
+    .socialIcons__container {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+
+        .socialIcons--icon {
+            @include flexBox(center, center);
+
+            width: 50px;
+            height: 50px;
+            border: #fff 1px solid;
+            border-radius: 50px;
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: all .4s ease-in-out;
+
+            i {
+                color: #fff;
+            }
+        }
+
+        .socialIcons--icon:hover {
+            border: 1px solid $secondaryColor;
+            transform: scale(1.05);
+        }
+    }
+
+    .attribution {
+        color: #fff;
+        font-family: $textFont;
+        padding-top: 8rem;
+
+        a {
+            text-decoration: none;
+            color: $secondaryColor;
+        }
+    }
+}
+
+@media screen and (max-width: 375px) {
+    body {
+        background: url(./images/bg-mobile.svg) no-repeat;
+        background-size: contain;
+        background-color: $primaryColor;
+    }
+
+    .page__container {
+        width: 320px;
+        height: 100vh;
+        margin: 0 auto;
+    }
+
+    .nav__container {
+        padding-top: 2rem;
+    
+        img {
+            width: 9rem;
+        }
+    }
+
+    .main__container {
+        padding-top: 4rem;
+    }
+
+    .main__container {
+        flex-direction: column;
+
+        .main__img {
+            img {
+                width: 20rem;
+            }
+        }
+
+        .main__text {
+            margin-left: 0;
+            text-align: center;
+
+            h1 {
+                padding: 1rem 0;
+            }
+        }
+    }
+
+    footer {
+        .socialIcons__container {
+            @include flexBox(center, space-around);
+            width: 70%;
+            margin: 0 auto;
+            padding-top: 3rem;
+
+            .socialIcons--icon {
+                width: 40px;
+                height: 40px;
+                margin-left: 0;
+            }
+        }
+
+        .attribution {
+            padding-top: 2rem;
+        }
+    }
+}
